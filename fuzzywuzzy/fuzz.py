@@ -156,41 +156,41 @@ def _token_set(s1, s2, partial=True, force_ascii=True, full_process=True):
         return 0
 
     # pull tokens
-    tokens1 = set(p1.split())
-    tokens2 = set(p2.split())
+    tokens1 = list(p1.split())
+    tokens2 = list(p2.split())
 
-    intersection = tokens1.intersection(tokens2)
-    diff1to2 = tokens1.difference(tokens2)
-    diff2to1 = tokens2.difference(tokens1)
+    #intersection = tokens1.intersection(tokens2)
+    #diff1to2 = tokens1.difference(tokens2)
+    #diff2to1 = tokens2.difference(tokens1)
 
-    delimiter = "+++"
-    sorted_sect = delimiter.join((intersection))
-    sorted_1to2 = delimiter.join((diff1to2))
-    sorted_2to1 = delimiter.join((diff2to1))
+    #delimiter = "+++"
+    #sorted_sect = delimiter.join((intersection))
+    #sorted_1to2 = delimiter.join((diff1to2))
+    #sorted_2to1 = delimiter.join((diff2to1))
 
-    combined_1to2 = sorted_sect + delimiter + sorted_1to2
-    combined_2to1 = sorted_sect + delimiter + sorted_2to1
+    #combined_1to2 = sorted_sect + delimiter + sorted_1to2
+    #combined_2to1 = sorted_sect + delimiter + sorted_2to1
 
     # strip
-    sorted_sect = sorted_sect.strip()
-    combined_1to2 = combined_1to2.strip()
-    combined_2to1 = combined_2to1.strip()
+    #sorted_sect = sorted_sect.strip()
+    #combined_1to2 = combined_1to2.strip()
+    #combined_2to1 = combined_2to1.strip()
 
     # replace
-    sorted_sect = sorted_sect.replace(delimiter, " ")
-    combined_1to2 = combined_1to2.replace(delimiter, " ")
-    combined_2to1 = combined_2to1.replace(delimiter, " ")
+    #sorted_sect = sorted_sect.replace(delimiter, " ")
+    #combined_1to2 = combined_1to2.replace(delimiter, " ")
+    #combined_2to1 = combined_2to1.replace(delimiter, " ")
 
     if partial:
         ratio_func = partial_ratio
     else:
         ratio_func = setratio
-    pairwise = [
-        ratio_func(sorted_sect, combined_1to2),
-        ratio_func(sorted_sect, combined_2to1),
-        ratio_func(combined_1to2, combined_2to1)
-    ]
-    return max(pairwise)
+    #pairwise = [
+    #    ratio_func(sorted_sect, combined_1to2),
+    #    ratio_func(sorted_sect, combined_2to1),
+    #    ratio_func(combined_1to2, combined_2to1)
+    #]
+    return ratio_func(tokens1, tokens2)
 
 
 def token_set_ratio(s1, s2, force_ascii=True, full_process=True):
