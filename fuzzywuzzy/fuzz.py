@@ -164,9 +164,9 @@ def _token_set(s1, s2, partial=True, force_ascii=True, full_process=True):
     diff2to1 = tokens2.difference(tokens1)
 
     delimiter = "+++"
-    sorted_sect = delimiter.join(sorted(intersection))
-    sorted_1to2 = delimiter.join(sorted(diff1to2))
-    sorted_2to1 = delimiter.join(sorted(diff2to1))
+    sorted_sect = delimiter.join((intersection))
+    sorted_1to2 = delimiter.join((diff1to2))
+    sorted_2to1 = delimiter.join((diff2to1))
 
     combined_1to2 = sorted_sect + delimiter + sorted_1to2
     combined_2to1 = sorted_sect + delimiter + sorted_2to1
